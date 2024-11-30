@@ -1,9 +1,9 @@
-package tetris;
+
 
 import java.awt.Color;
 import java.util.Random;
 
-public class TetrisBlock
+public class Block
 {
     private int [][]shape;
     private Color color;
@@ -13,7 +13,7 @@ public class TetrisBlock
     
     private Color[] availableColors = {Color.GREEN, Color.RED, Color.BLUE};
     
-    public TetrisBlock (int[][] shape)
+    public Block (int[][] shape)
     {
         this.shape = shape;
         
