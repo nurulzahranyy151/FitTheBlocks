@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 import javax.swing.JPanel;
-import tetrisblocks.*;
 
 // Kelas GameArea
 public class GameArea extends JPanel
@@ -12,9 +11,9 @@ public class GameArea extends JPanel
     private int gridCellSize;
     private Color [][] background;
     
-    private TetrisBlock block;
+    private Block block;
     
-    private TetrisBlock[] blocks;
+    private Block[] blocks;
     
     public GameArea(JPanel placeholder, int columns)
     {
@@ -27,7 +26,7 @@ public class GameArea extends JPanel
         gridCellSize = this.getBounds().width/gridColumns;
         gridRows = this.getBounds().height/gridCellSize;
 
-        blocks = new TetrisBlock[]{ new IShape(),
+        blocks = new Block[]{ new IShape(),
                                     new JShape(),
                                     new LShape(),
                                     new OShape(),
