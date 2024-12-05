@@ -1,4 +1,4 @@
-package ftbGame;
+package ftbBlocks;
 public class StartupForm extends javax.swing.JFrame {
 
     public StartupForm() {

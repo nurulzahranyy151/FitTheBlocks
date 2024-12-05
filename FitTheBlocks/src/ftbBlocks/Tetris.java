@@ -1,4 +1,4 @@
-package ftbGame;
+package ftbBlocks;
 import javax.swing.JOptionPane;
 
 public class Tetris

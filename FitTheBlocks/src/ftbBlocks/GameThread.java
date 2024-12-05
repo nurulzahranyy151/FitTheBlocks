@@ -1,4 +1,4 @@
-package ftbGame;
+package ftbBlocks;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

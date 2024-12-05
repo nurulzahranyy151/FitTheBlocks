@@ -1,17 +1,8 @@
-package ftbGame;
+package ftbBlocks;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 import javax.swing.JPanel;
-import ftbBlocks.*;
-
-import ftbBlocks.IShape;
-import ftbBlocks.JShape;
-import ftbBlocks.LShape;
-import ftbBlocks.OShape;
-import ftbBlocks.SShape;
-import ftbBlocks.TShape;
-import ftbBlocks.ZShape;
 
 // Kelas GameArea
 public class GameArea extends JPanel
@@ -21,9 +12,9 @@ public class GameArea extends JPanel
     private int gridCellSize;
     private Color [][] background;
     
-    private Block block;
+    private FtbBlock block;
     
-    private Block[] blocks;
+    private FtbBlock[] blocks;
     
     public GameArea(JPanel placeholder, int columns)
     {
@@ -36,7 +27,7 @@ public class GameArea extends JPanel
         gridCellSize = this.getBounds().width/gridColumns;
         gridRows = this.getBounds().height/gridCellSize;
 
-        blocks = new Block[]{ new IShape(),
+        blocks = new FtbBlock[]{ new IShape(),
                                     new JShape(),
                                     new LShape(),
                                     new OShape(),
@@ -276,22 +267,20 @@ public class GameArea extends JPanel
         }
     }
     
-    private void drawBlock(Graphics g)
-    {
+    private void drawBlock(Graphics g) {
+        if (block == null) return; // Check if block is null
+    
         int h = block.getHeight();
         int w = block.getWidth();
         Color c = block.getColor();
-        int [][] shape = block.getShape();
-        
-        for(int row = 0; row < h; row++)
-        {
-            for(int col = 0; col < w; col++)
-            {
-                if(shape[row][col]==1)
-                {
-                    int x = (block.getX()+ col) * gridCellSize;
-                    int y = (block.getY()+ row) * gridCellSize;
-                    
+        int[][] shape = block.getShape();
+    
+        for (int row = 0; row < h; row++) {
+            for (int col = 0; col < w; col++) {
+                if (shape[row][col] == 1) {
+                    int x = (block.getX() + col) * gridCellSize;
+                    int y = (block.getY() + row) * gridCellSize;
+    
                     drawGridSquare(g, c, x, y);
                 }
             }

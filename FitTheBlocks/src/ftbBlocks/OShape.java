@@ -1,7 +1,6 @@
 package ftbBlocks;
-import ftbGame.Block;
 
-public class OShape extends Block
+public class OShape extends FtbBlock
 {
     public OShape()
     {

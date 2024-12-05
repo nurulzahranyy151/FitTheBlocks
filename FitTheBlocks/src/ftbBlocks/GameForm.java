@@ -1,4 +1,4 @@
-package ftbGame;
+package ftbBlocks;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -16,6 +16,7 @@ public class GameForm extends JFrame
         initComponents();
         
         ga = new GameArea(gameAreaPlaceholder, 10);
+        ga.initBackgroundArray();
         this.add(ga);
         
         initControls();
@@ -158,33 +159,7 @@ public class GameForm extends JFrame
         
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
-    public static void main(String args[])
-    {
-       
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-       
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run() {
-                new GameForm().setVisible(true);
-            }
-        });
-    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;

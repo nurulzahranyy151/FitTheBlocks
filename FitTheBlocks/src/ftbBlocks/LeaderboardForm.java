@@ -1,4 +1,4 @@
-package ftbGame;
+package ftbBlocks;
 import javax.swing.table.DefaultTableModel;
 
 public class LeaderboardForm extends javax.swing.JFrame {

@@ -1,7 +1,6 @@
 package ftbBlocks;
-import ftbGame.Block;
 
-public class TShape extends Block
+public class TShape extends FtbBlock
 {
     public TShape()
     {

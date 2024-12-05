@@ -1,7 +1,6 @@
 package ftbBlocks;
-import ftbGame.Block;
 
-public class JShape extends Block
+public class JShape extends FtbBlock
 {
     public JShape()
     {

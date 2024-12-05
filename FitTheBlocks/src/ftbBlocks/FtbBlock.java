@@ -1,8 +1,8 @@
-package ftbGame;
+package ftbBlocks;
 import java.awt.Color;
 import java.util.Random;
 
-public class Block
+public class FtbBlock
 {
     private int [][]shape;
     private Color color;
@@ -12,7 +12,7 @@ public class Block
     
     private Color[] availableColors = {Color.GREEN, Color.RED, Color.BLUE};
     
-    public Block (int[][] shape)
+    public FtbBlock (int[][] shape)
     {
         this.shape = shape;
         
