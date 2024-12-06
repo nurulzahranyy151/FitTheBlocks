@@ -1,5 +1,7 @@
 package ftbBlocks;
 
+import ftbGames.FtbBlock;
+
 public class SShape extends FtbBlock
 {
     public SShape()
