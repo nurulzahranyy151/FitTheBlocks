@@ -1,4 +1,7 @@
 package ftbGames;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
 
 public class LeaderboardForm extends javax.swing.JFrame {
@@ -129,4 +132,22 @@ public class LeaderboardForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable leaderboard;
     // End of variables declaration//GEN-END:variables
+
+    public void updateLeaderboard(DatabaseManager dbManager) {
+        tm.setRowCount(0);  // Clear existing rows
+    
+        try {
+            // Fetch updated leaderboard data from the database
+            ArrayList<String[]> leaderboardData = dbManager.getLeaderboard();
+    
+            // Add rows to the table model
+            for (String[] data : leaderboardData) {
+                tm.addRow(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+
 }

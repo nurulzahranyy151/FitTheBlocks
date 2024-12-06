@@ -1,69 +1,37 @@
 package ftbGames;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseManager {
-
     private Connection connection;
-    private static final String DB_URL = "jdbc:sqlite:tetris.db"; // Gunakan SQLite atau ganti dengan DB yang Anda pilih
 
-    // Konstruktor untuk membuka koneksi database
-    public DatabaseManager() {
-        try {
-            connection = DriverManager.getConnection(DB_URL);
-            System.out.println("Database connected");
-            createTableIfNotExists();
-        } catch (SQLException e) {
-            System.err.println("Database connection failed: " + e.getMessage());
+    // Constructor to initialize the database connection
+    public DatabaseManager(String url, String user, String password) throws SQLException {
+        connection = DriverManager.getConnection(url, user, password);
+    }
+
+    // Method to add player's name and score to the database
+    public void addPlayer(String name, int score) throws SQLException {
+        String query = "INSERT INTO leaderboard (name, score) VALUES (?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, name); // Player's name
+            stmt.setInt(2, score);   // Player's score
+            stmt.executeUpdate();
+            System.out.println("Player data added to the leaderboard.");
         }
     }
 
-    // Membuat tabel jika belum ada
-    private void createTableIfNotExists() {
-        String createTableSQL = "CREATE TABLE IF NOT EXISTS leaderboard ("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "name TEXT NOT NULL, "
-                + "score INTEGER NOT NULL, "
-                + "level INTEGER NOT NULL"
-                + ");";
-        try (Statement stmt = connection.createStatement()) {
-            stmt.execute(createTableSQL);
-        } catch (SQLException e) {
-            System.err.println("Error creating table: " + e.getMessage());
-        }
-    }
-
-    // Menambahkan data player baru (nama, skor, level) ke database
-    public void addPlayer(String name, int score, int level) {
-        String insertSQL = "INSERT INTO leaderboard (name, score, level) VALUES (?, ?, ?)";
-        try (PreparedStatement pstmt = connection.prepareStatement(insertSQL)) {
-            pstmt.setString(1, name);
-            pstmt.setInt(2, score);
-            pstmt.setInt(3, level);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Error inserting player: " + e.getMessage());
-        }
-    }
-
-    // Mengambil leaderboard (skor tertinggi, urutan menurun)
-    public ResultSet getLeaderboard() {
-        String selectSQL = "SELECT * FROM leaderboard ORDER BY score DESC";
-        try (Statement stmt = connection.createStatement()) {
-            return stmt.executeQuery(selectSQL);
-        } catch (SQLException e) {
-            System.err.println("Error retrieving leaderboard: " + e.getMessage());
-            return null;
-        }
-    }
-
-    // Menutup koneksi database
-    public void close() {
-        try {
-            if (connection != null) {
-                connection.close();
+    // Method to fetch the leaderboard from the database
+    public ArrayList<String[]> getLeaderboard() throws SQLException {
+        ArrayList<String[]> leaderboard = new ArrayList<>();
+        String query = "SELECT name, score FROM leaderboard ORDER BY score DESC"; // Order by score descending
+        try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                String playerName = rs.getString("name");
+                int score = rs.getInt("score");
+                leaderboard.add(new String[]{playerName, String.valueOf(score)});
             }
-        } catch (SQLException e) {
-            System.err.println("Error closing connection: " + e.getMessage());
         }
+        return leaderboard;
     }
 }

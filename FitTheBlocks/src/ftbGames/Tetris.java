@@ -1,4 +1,6 @@
 package ftbGames;
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 
 public class Tetris
@@ -28,7 +30,27 @@ public class Tetris
     
     public static void gameOver(int score) {
         String playerName = JOptionPane.showInputDialog("Game Over!\nPlease enter your name.");
-        gf.setVisible(false);
-        lf.addPlayer(playerName, score);
+        if (playerName != null && !playerName.trim().isEmpty()) {
+            // Hide the game form
+            gf.setVisible(false);
+   
+            try {
+                // Add player data (name, score) to the database
+                DatabaseManager dbManager = new DatabaseManager("jdbc:mysql://localhost:3307/tetris_game", "root", "");
+                dbManager.addPlayer(playerName, score);
+                
+                // Update the leaderboard form with the latest data
+                lf.updateLeaderboard(dbManager);  // Assuming lf is the leaderboard form
+   
+                // Show the leaderboard form
+                lf.setVisible(true);  // Show the leaderboard after data is added
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // If the player doesn't enter a valid name, ask them again
+            JOptionPane.showMessageDialog(null, "Please enter a valid name.");
+        }
     }
+   
 }
