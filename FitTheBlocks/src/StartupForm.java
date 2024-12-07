@@ -1,3 +1,5 @@
+package ftbGames;
+
 public class StartupForm extends javax.swing.JFrame {
 
     public StartupForm() {
@@ -11,30 +13,47 @@ public class StartupForm extends javax.swing.JFrame {
         btnStart = new javax.swing.JButton();
         btnLeaderboard = new javax.swing.JButton();
         btnQuit = new javax.swing.JButton();
-
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
+        setTitle("ftbGames");
+        
+        // Konfigurasi tombol Start
         btnStart.setText("Start Game");
+        btnStart.setBackground(new java.awt.Color(221, 160, 221)); // Warna ungu muda
+        btnStart.setForeground(java.awt.Color.WHITE); // Warna teks hitam
+        btnStart.setFocusPainted(false);
+        btnStart.setFont(new java.awt.Font("Poppins", java.awt.Font.BOLD, 14)); // Pastikan font sudah tersedia
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);
             }
         });
-
+        
+        // Konfigurasi tombol Leaderboard
         btnLeaderboard.setText("Leaderboard");
+        btnLeaderboard.setBackground(new java.awt.Color(221, 160, 221)); 
+        btnLeaderboard.setForeground(java.awt.Color.WHITE); 
+        btnLeaderboard.setFocusPainted(false);
+        btnLeaderboard.setFont(new java.awt.Font("Poppins", java.awt.Font.BOLD, 14)); 
         btnLeaderboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLeaderboardActionPerformed(evt);
             }
         });
-
+        
+        // Konfigurasi tombol Quit
         btnQuit.setText("Quit");
+        btnQuit.setBackground(new java.awt.Color(221, 160, 221)); 
+        btnQuit.setForeground(java.awt.Color.WHITE); 
+        btnQuit.setFocusPainted(false);
+        btnQuit.setFont(new java.awt.Font("Poppins", java.awt.Font.BOLD, 14));
         btnQuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuitActionPerformed(evt);
             }
         });
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
