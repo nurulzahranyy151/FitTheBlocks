@@ -12,12 +12,18 @@ public class DatabaseManager {
 
     // Method to add player's name and score to the database
     public void addPlayer(String name, int score) throws SQLException {
-        String query = "INSERT INTO leaderboard (name, score) VALUES (?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        String addQuery = "INSERT INTO leaderboard (name, score) VALUES (?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(addQuery)) {
             stmt.setString(1, name); // Player's name
             stmt.setInt(2, score);   // Player's score
             stmt.executeUpdate();
             System.out.println("Player data added to the leaderboard.");
+        }
+    }
+
+    public void deletePlayer (String name) throws SQLException{
+        String deleteQuery = "DELETE FROM leaderboard WHERE name = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(deleteQuery)){
         }
     }
 
