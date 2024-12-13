@@ -1,8 +1,5 @@
 package ftbGames;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class GameThread extends Thread
 {
     private GameArea ga;

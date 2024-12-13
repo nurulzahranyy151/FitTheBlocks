@@ -106,13 +106,13 @@ public class LeaderboardForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void updateLeaderboard(DatabaseManager dbManager) {
-        tm.setRowCount(0);  // Clear existing rows
+        tm.setRowCount(0); // Hapus semua baris yang ada
     
         try {
-            // Fetch updated leaderboard data from the database
+            // Ambil data leaderboard terbaru dari database
             ArrayList<String[]> leaderboardData = dbManager.getLeaderboard();
     
-            // Add rows to the table model
+            // Tambahkan data baru ke tabel
             for (String[] data : leaderboardData) {
                 tm.addRow(data);
             }
@@ -120,6 +120,9 @@ public class LeaderboardForm extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+        //</editor-fold>
+
     
 
 }

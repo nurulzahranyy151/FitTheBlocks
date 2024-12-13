@@ -21,8 +21,19 @@ public class Tetris
     }
     
     public static void showLeaderboard() {
+        try {
+            // Inisialisasi DatabaseManager untuk mengambil data terbaru
+            DatabaseManager dbManager = new DatabaseManager("jdbc:mysql://localhost:3307/tetris_game", "root", "");
+            
+            // Perbarui data leaderboard
+            lf.updateLeaderboard(dbManager);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
         lf.setVisible(true);
     }
+    
     
     public static void showStartup() {
         sf.setVisible(true);
@@ -35,18 +46,18 @@ public class Tetris
             gf.setVisible(false);
    
             try {
-                // Add player data (name, score) to the database
+                // Tambahkan data pemain ke database
                 DatabaseManager dbManager = new DatabaseManager("jdbc:mysql://localhost:3307/tetris_game", "root", "");
                 dbManager.addPlayer(playerName, score);
                 
-                // Update the leaderboard form with the latest data
-                lf.updateLeaderboard(dbManager);  // Assuming lf is the leaderboard form
-   
-                // Show the leaderboard form
-                lf.setVisible(true);  // Show the leaderboard after data is added
+                // Perbarui leaderboard dengan data terbaru
+                lf.updateLeaderboard(dbManager);
+            
+                // Tampilkan leaderboard
+                lf.setVisible(true);
             } catch (SQLException e) {
                 e.printStackTrace();
-            }
+            }            
         } else {
             // If the player doesn't enter a valid name, ask them again
             JOptionPane.showMessageDialog(null, "Please enter a valid name.");

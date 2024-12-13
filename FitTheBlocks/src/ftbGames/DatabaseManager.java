@@ -21,12 +21,16 @@ public class DatabaseManager {
         }
     }
 
-    public void deletePlayer (String name) throws SQLException{
-        String deleteQuery = "DELETE FROM leaderboard WHERE name = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(deleteQuery)){
+    public void deletePlayer(String name) throws SQLException {
+        String deleteQuery = "DELETE from leaderboard where name = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(deleteQuery)) {
+            stmt.setString(1, name); // Player's name
+            stmt.executeUpdate();
+            System.out.println("Player data deleted from the leaderboard.");
         }
     }
 
+ 
     // Method to fetch the leaderboard from the database
     public ArrayList<String[]> getLeaderboard() throws SQLException {
         ArrayList<String[]> leaderboard = new ArrayList<>();

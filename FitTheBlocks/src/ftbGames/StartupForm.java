@@ -1,7 +1,4 @@
-<<<<<<< HEAD:FitTheBlocks/src/ftbGames/StartupForm.java
 package ftbGames;
-<<<<<<< HEAD:FitTheBlocks/src/StartupForm.java
-=======
 import java.awt.Color;
 import static java.awt.EventQueue.invokeLater;
 import java.awt.Font;
@@ -14,10 +11,7 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
->>>>>>> 7d27d563e7a853af50a6e6ae9a31cbc8aa0a7428:FitTheBlocks/src/StartupForm.java
 
-=======
->>>>>>> main:FitTheBlocks/src/ftbGames/StartupForm.java
 public class StartupForm extends javax.swing.JFrame {
 
     public StartupForm() {
@@ -35,11 +29,7 @@ public class StartupForm extends javax.swing.JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setTitle("ftbGames");
-<<<<<<< HEAD:FitTheBlocks/src/StartupForm.java
-        
-        // Konfigurasi tombol Start
-=======
->>>>>>> main:FitTheBlocks/src/ftbGames/StartupForm.java
+
         btnStart.setText("Start Game");
         btnStart.setBackground(new Color(221, 160, 221)); // Warna ungu muda
         btnStart.setForeground(Color.WHITE); // Warna teks hitam
@@ -50,8 +40,6 @@ public class StartupForm extends javax.swing.JFrame {
                 btnStartActionPerformed(evt);
             }
         });
-        
-        // Konfigurasi tombol Leaderboard
         btnLeaderboard.setText("Leaderboard");
         btnLeaderboard.setBackground(new Color(221, 160, 221)); 
         btnLeaderboard.setForeground(Color.WHITE); 
@@ -122,16 +110,8 @@ public class StartupForm extends javax.swing.JFrame {
         
         System.exit(0);
         
-    }//GEN-LAST:event_btnQuitActionPerformed
-
-<<<<<<< HEAD:FitTheBlocks/src/ftbGames/StartupForm.java
-=======
-    /**
-     * @param args the command line arguments
-     */
-
->>>>>>> 7d27d563e7a853af50a6e6ae9a31cbc8aa0a7428:FitTheBlocks/src/StartupForm.java
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    }
+    
     private JButton btnLeaderboard;
     private JButton btnQuit;
     private JButton btnStart;
