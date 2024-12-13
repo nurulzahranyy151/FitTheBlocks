@@ -1,9 +1,18 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
+import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
 import javax.swing.InputMap;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 public class GameForm extends JFrame
 {
@@ -80,18 +89,18 @@ public class GameForm extends JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gameAreaPlaceholder = new javax.swing.JPanel();
-        scoreDisplay = new javax.swing.JLabel();
-        levelDisplay = new javax.swing.JLabel();
-        btnMainMenu = new javax.swing.JButton();
+        gameAreaPlaceholder = new JPanel();
+        scoreDisplay = new JLabel();
+        levelDisplay = new JLabel();
+        btnMainMenu = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        gameAreaPlaceholder.setBackground(new java.awt.Color(238, 238, 238));
-        gameAreaPlaceholder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        gameAreaPlaceholder.setBackground(new Color(238, 238, 238));
+        gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout gameAreaPlaceholderLayout = new javax.swing.GroupLayout(gameAreaPlaceholder);
+        GroupLayout gameAreaPlaceholderLayout = new GroupLayout(gameAreaPlaceholder);
         gameAreaPlaceholder.setLayout(gameAreaPlaceholderLayout);
         gameAreaPlaceholderLayout.setHorizontalGroup(
             gameAreaPlaceholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,15 +111,15 @@ public class GameForm extends JFrame
             .addGap(0, 298, Short.MAX_VALUE)
         );
 
-        scoreDisplay.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        scoreDisplay.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
         scoreDisplay.setText("Score: 0");
 
-        levelDisplay.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        levelDisplay.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
         levelDisplay.setText("Level: 1");
 
         btnMainMenu.setText("Main Menu");
         btnMainMenu.setFocusable(false);
-        btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
+        btnMainMenu.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainMenuActionPerformed(evt);
             }
