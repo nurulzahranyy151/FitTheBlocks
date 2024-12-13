@@ -1,9 +1,11 @@
 package ftbGames;
 
+import java.awt.*;
+
 public class Main {
     public static void main(String[] args)
     {
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        EventQueue.invokeLater(new Runnable() {
             public void run() {
                 // Inisialisasi objek GameForm, StartupForm, LeaderboardForm
                 GameForm gf = new GameForm();

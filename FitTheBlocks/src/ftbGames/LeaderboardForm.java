@@ -50,11 +50,11 @@ public class LeaderboardForm extends javax.swing.JFrame {
     
     private void initComponents() {
 
-        btnMainMenu = new JButton();
-        txtDeletePlayerName = new JTextField();
-        btnDeletePlayer = new JButton();
-        jScrollPane1 = new JScrollPane();
-        leaderboard = new JTable();
+         btnMainMenu = new JButton();
+         txtDeletePlayerName = new JTextField();
+         btnDeletePlayer = new JButton();
+         jScrollPane1 = new JScrollPane();
+         leaderboard = new JTable();
     
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -88,6 +88,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
         txtDeletePlayerName.setToolTipText("Enter player name to delete");
     
         btnDeletePlayer.setText("Delete Player");
+        btnDeletePlayer.setBackground(new Color(221, 160, 221));
         btnDeletePlayer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnDeletePlayerActionPerformed(evt);

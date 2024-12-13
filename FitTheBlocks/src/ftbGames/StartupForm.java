@@ -27,7 +27,7 @@ public class StartupForm extends javax.swing.JFrame {
         btnQuit = new JButton();
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
         setTitle("ftbGames");
 
         btnStart.setText("Start Game");
@@ -90,14 +90,14 @@ public class StartupForm extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void btnStartActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+    private void btnStartActionPerformed(ActionEvent evt) {
 
         this.setVisible(false);
         Tetris.start();
         
-    }//GEN-LAST:event_btnStartActionPerformed
+    }
 
     private void btnLeaderboardActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnLeaderboardActionPerformed
         

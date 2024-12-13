@@ -42,7 +42,6 @@ public class Tetris
     public static void gameOver(int score) {
         String playerName = JOptionPane.showInputDialog("Game Over!\nPlease enter your name.");
         if (playerName != null && !playerName.trim().isEmpty()) {
-            // Hide the game form
             gf.setVisible(false);
    
             try {
@@ -59,7 +58,6 @@ public class Tetris
                 e.printStackTrace();
             }            
         } else {
-            // If the player doesn't enter a valid name, ask them again
             JOptionPane.showMessageDialog(null, "Please enter a valid name.");
         }
     }
