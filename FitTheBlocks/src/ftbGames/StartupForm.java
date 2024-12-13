@@ -27,7 +27,7 @@ public class StartupForm extends javax.swing.JFrame {
         btnQuit = new JButton();
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);
         setTitle("ftbGames");
 
         btnStart.setText("Start Game");
