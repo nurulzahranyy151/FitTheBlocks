@@ -1,6 +1,5 @@
 package ftbGames;
 
-import javax.swing.JOptionPane;
 
 public class GameThread extends Thread
 {

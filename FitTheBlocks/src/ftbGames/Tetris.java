@@ -1,6 +1,5 @@
 package ftbGames;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
 public class Tetris
