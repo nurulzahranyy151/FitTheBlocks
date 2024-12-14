@@ -6,8 +6,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
-public class LeaderboardForm extends javax.swing.JFrame {
+
+public class LeaderboardForm extends JFrame {
 
     private DefaultTableModel tm;
     private JTextField txtDeletePlayerName;
@@ -16,6 +19,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
     public LeaderboardForm() {
         initComponents();
         initTableData();
+        loadCustomFont();
     }
     
     private void initTableData()
@@ -168,7 +172,23 @@ public class LeaderboardForm extends javax.swing.JFrame {
         }
     }
     
-        //</editor-fold>
+    private void loadCustomFont() {
+        try {
+            // Ganti dengan path yang sesuai di mana Anda menyimpan file font Poppins
+            Font poppinsFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/Poppins/Poppins-Medium.ttf"));
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(poppinsFont);
+            
+            // Mengatur font untuk komponen
+            Font poppins = poppinsFont.deriveFont(12f); // Ukuran font 12
+            btnMainMenu.setFont(poppins);
+            btnDeletePlayer.setFont(poppins);
+            // Anda bisa mengatur font untuk komponen lain di sini
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     
 

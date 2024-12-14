@@ -2,11 +2,7 @@ package ftbGames;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JFrame;
-import javax.swing.KeyStroke;
+
 import javax.swing.*;
 
 public class GameForm extends JFrame
@@ -93,7 +89,8 @@ public class GameForm extends JFrame
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        gameAreaPlaceholder.setBackground(new Color(238, 238, 238));
+        this.getContentPane().setBackground(new Color(205, 193, 255));
+        gameAreaPlaceholder.setBackground(new Color(205, 193, 255));
         gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 
         GroupLayout gameAreaPlaceholderLayout = new GroupLayout(gameAreaPlaceholder);

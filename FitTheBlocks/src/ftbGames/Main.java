@@ -1,5 +1,4 @@
 package ftbGames;
-
 import java.awt.*;
 
 public class Main {
