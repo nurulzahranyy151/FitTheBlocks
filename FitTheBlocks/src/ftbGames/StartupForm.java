@@ -140,7 +140,7 @@ public class StartupForm extends JFrame {
     }
 
     private void btnQuitActionPerformed(ActionEvent evt) {
-        System.exit(0); // tes
+        System.exit(0); // tea
     }
 
 }
