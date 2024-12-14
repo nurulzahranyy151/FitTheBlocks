@@ -1,20 +1,11 @@
 package ftbGames;
-
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.BorderFactory;
-import javax.swing.GroupLayout;
-import javax.swing.InputMap;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
-import javax.swing.WindowConstants;
+import java.io.File;
+import java.io.IOException;
+import java.awt.*;
+
+import javax.swing.*;
 
 public class GameForm extends JFrame
 {
@@ -24,12 +15,11 @@ public class GameForm extends JFrame
     public GameForm()
     {
         initComponents();
-        
         ga = new GameArea(gameAreaPlaceholder, 10);
         ga.initBackgroundArray();
         this.add(ga);
-        
         initControls();
+        loadCustomFont();
     }
     
     private void initControls()
@@ -88,7 +78,7 @@ public class GameForm extends JFrame
         levelDisplay.setText("Level: " +level);
     }
     
-    @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -100,81 +90,103 @@ public class GameForm extends JFrame
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        gameAreaPlaceholder.setBackground(new Color(238, 238, 238));
-        gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        this.getContentPane().setBackground(new Color(205, 193, 255));
+        gameAreaPlaceholder.setBackground(new Color(205, 193, 255));
+        gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+        gameAreaPlaceholder.setPreferredSize(new Dimension(200, 300));
+        
 
         GroupLayout gameAreaPlaceholderLayout = new GroupLayout(gameAreaPlaceholder);
         gameAreaPlaceholder.setLayout(gameAreaPlaceholderLayout);
         gameAreaPlaceholderLayout.setHorizontalGroup(
-            gameAreaPlaceholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            gameAreaPlaceholderLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 198, Short.MAX_VALUE)
         );
         gameAreaPlaceholderLayout.setVerticalGroup(
-            gameAreaPlaceholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            gameAreaPlaceholderLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 298, Short.MAX_VALUE)
         );
 
-        scoreDisplay.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
         scoreDisplay.setText("Score: 0");
 
-        levelDisplay.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
         levelDisplay.setText("Level: 1");
 
         btnMainMenu.setText("Main Menu");
-        btnMainMenu.setFocusable(false);
+        btnMainMenu.setFocusable(true);
+        btnMainMenu.setForeground(Color.white);
+        btnMainMenu.setBackground(new Color(221, 160, 221));
         btnMainMenu.addActionListener(new ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            public void actionPerformed(ActionEvent evt) {
                 btnMainMenuActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
+        
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMainMenu, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(gameAreaPlaceholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(levelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scoreDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addComponent(levelDisplay, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(scoreDisplay, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(btnMainMenu)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(scoreDisplay)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(levelDisplay))
-                    .addComponent(gameAreaPlaceholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(gameAreaPlaceholder, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
+    private void btnMainMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         
         gt.interrupt();
         this.setVisible(false);
         Tetris.showStartup();
         
-    }//GEN-LAST:event_btnMainMenuActionPerformed
+    }
+
+    private void loadCustomFont() {
+        try {
+            // Ganti dengan path yang sesuai di mana Anda menyimpan file font Poppins
+            Font poppinsFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/Poppins/Poppins-Medium.ttf"));
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(poppinsFont);
+            
+            // Mengatur font untuk komponen
+            Font poppins = poppinsFont.deriveFont(12f); // Ukuran font 12
+            levelDisplay.setFont(poppins);
+            scoreDisplay.setFont(poppins);
+            btnMainMenu.setFont(poppins);   
+            // Anda bisa mengatur font untuk komponen lain di sini
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMainMenu;
-    private javax.swing.JPanel gameAreaPlaceholder;
-    private javax.swing.JLabel levelDisplay;
-    private javax.swing.JLabel scoreDisplay;
+    private JButton btnMainMenu;
+    private JPanel gameAreaPlaceholder;
+    private JLabel levelDisplay;
+    private JLabel scoreDisplay;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,7 +29,9 @@ public class StartupForm extends JFrame {
     // private Image backgroundImg;
 
     public StartupForm() {
+        setTitle("Fit The Blocks!");
         initComponents();
+        // loadCustomFont();
     }
 
     private void initComponents() {
