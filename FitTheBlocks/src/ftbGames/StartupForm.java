@@ -1,5 +1,5 @@
 package ftbGames;
-import java.awt.Color;
+import java.awt.*;
 import static java.awt.EventQueue.invokeLater;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,11 +11,17 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+import java.io.File;
+import java.io.IOException;
+
+
 
 public class StartupForm extends javax.swing.JFrame {
 
     public StartupForm() {
+        setTitle("Fit The Blocks!");
         initComponents();
+        loadCustomFont();
     }
     
     @SuppressWarnings("unchecked")
@@ -112,8 +118,27 @@ public class StartupForm extends javax.swing.JFrame {
         
     }
     
+    
     private JButton btnLeaderboard;
     private JButton btnQuit;
     private JButton btnStart;
     // End of variables declaration//GEN-END:variables
+
+    private void loadCustomFont() {
+        try {
+            // Ganti dengan path yang sesuai di mana Anda menyimpan file font Poppins
+            Font poppinsFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/Poppins/Poppins-Medium.ttf"));
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(poppinsFont);
+            
+            // Mengatur font untuk komponen
+            Font poppins = poppinsFont.deriveFont(12f); // Ukuran font 12
+            btnLeaderboard.setFont(poppins);
+            btnQuit.setFont(poppins);
+            btnStart.setFont(poppins);
+            // Anda bisa mengatur font untuk komponen lain di sini
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

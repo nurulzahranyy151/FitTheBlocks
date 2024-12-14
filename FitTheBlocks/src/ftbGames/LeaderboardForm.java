@@ -2,6 +2,8 @@ package ftbGames;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.*;
+
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.event.*;
@@ -17,6 +19,7 @@ public class LeaderboardForm extends JFrame {
     private JButton btnDeletePlayer;
 
     public LeaderboardForm() {
+        setTitle("Leaderboard");
         initComponents();
         initTableData();
         loadCustomFont();
@@ -59,7 +62,8 @@ public class LeaderboardForm extends JFrame {
          btnDeletePlayer = new JButton();
          jScrollPane1 = new JScrollPane();
          leaderboard = new JTable();
-    
+        
+        getContentPane().setBackground(new Color(229, 217, 242));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
     
@@ -71,6 +75,8 @@ public class LeaderboardForm extends JFrame {
                 btnMainMenuActionPerformed(evt);
             }
         });
+
+
     
         leaderboard.setModel(new DefaultTableModel(
             new Object [][] {
@@ -89,10 +95,29 @@ public class LeaderboardForm extends JFrame {
             }
         });
         jScrollPane1.setViewportView(leaderboard);
-    
+        
+        // Kustomisasi font dan tampilan tabel
+
+        leaderboard.setRowHeight(30);
+        leaderboard.setBackground(new Color(240, 240, 240));
+        leaderboard.setForeground(new Color(51, 51, 51));
+
+        leaderboard.getTableHeader().setFont(new Font("Poppins", Font.BOLD, 16));
+        leaderboard.getTableHeader().setBackground(new Color(221, 160, 221));
+        leaderboard.getTableHeader().setForeground(Color.WHITE);
+        leaderboard.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(221, 160, 221), 2));
+
+        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+        cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        cellRenderer.setBackground(new Color(245, 245, 245));
+        cellRenderer.setForeground(new Color(64, 64, 64));
+
+        for (int i = 0; i < leaderboard.getColumnCount(); i++) {
+            leaderboard.getColumnModel().getColumn(i).setCellRenderer(cellRenderer);
+        }
+
         // Setup for delete player text field
         txtDeletePlayerName.setToolTipText("Enter player name to delete");
-    
         btnDeletePlayer.setText("Delete Player");
         btnDeletePlayer.setBackground(new Color(221, 160, 221));
         btnDeletePlayer.setForeground(Color.WHITE);
@@ -183,6 +208,7 @@ public class LeaderboardForm extends JFrame {
             Font poppins = poppinsFont.deriveFont(12f); // Ukuran font 12
             btnMainMenu.setFont(poppins);
             btnDeletePlayer.setFont(poppins);
+            leaderboard.setFont(poppins);
             // Anda bisa mengatur font untuk komponen lain di sini
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
