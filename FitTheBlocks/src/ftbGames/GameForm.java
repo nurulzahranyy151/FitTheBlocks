@@ -15,7 +15,6 @@ public class GameForm extends JFrame
     public GameForm()
     {
         initComponents();
-        
         ga = new GameArea(gameAreaPlaceholder, 10);
         ga.initBackgroundArray();
         this.add(ga);
@@ -79,7 +78,7 @@ public class GameForm extends JFrame
         levelDisplay.setText("Level: " +level);
     }
     
-    @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -94,6 +93,8 @@ public class GameForm extends JFrame
         this.getContentPane().setBackground(new Color(205, 193, 255));
         gameAreaPlaceholder.setBackground(new Color(205, 193, 255));
         gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+        gameAreaPlaceholder.setPreferredSize(new Dimension(200, 300));
+        
 
         GroupLayout gameAreaPlaceholderLayout = new GroupLayout(gameAreaPlaceholder);
         gameAreaPlaceholder.setLayout(gameAreaPlaceholderLayout);
@@ -121,6 +122,7 @@ public class GameForm extends JFrame
         });
 
         GroupLayout layout = new GroupLayout(getContentPane());
+        
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)

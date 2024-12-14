@@ -1,8 +1,6 @@
 package ftbGames;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.*;
-
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
@@ -30,9 +28,7 @@ public class LeaderboardForm extends JFrame {
         tm = (DefaultTableModel)leaderboard.getModel();
     }
     
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-
+  
     private void btnDeletePlayerActionPerformed(ActionEvent evt) {
         String playerName = txtDeletePlayerName.getText().trim();
     
