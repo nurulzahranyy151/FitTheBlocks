@@ -1,6 +1,8 @@
 package ftbGames;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.*;
 
 import javax.swing.*;
@@ -17,8 +19,8 @@ public class GameForm extends JFrame
         ga = new GameArea(gameAreaPlaceholder, 10);
         ga.initBackgroundArray();
         this.add(ga);
-        
         initControls();
+        loadCustomFont();
     }
     
     private void initControls()
@@ -104,10 +106,8 @@ public class GameForm extends JFrame
             .addGap(0, 298, Short.MAX_VALUE)
         );
 
-        scoreDisplay.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         scoreDisplay.setText("Score: 0");
 
-        levelDisplay.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         levelDisplay.setText("Level: 1");
 
         btnMainMenu.setText("Main Menu");
@@ -159,7 +159,25 @@ public class GameForm extends JFrame
         this.setVisible(false);
         Tetris.showStartup();
         
-    }//GEN-LAST:event_btnMainMenuActionPerformed
+    }
+
+    private void loadCustomFont() {
+        try {
+            // Ganti dengan path yang sesuai di mana Anda menyimpan file font Poppins
+            Font poppinsFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/Poppins/Poppins-Medium.ttf"));
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(poppinsFont);
+            
+            // Mengatur font untuk komponen
+            Font poppins = poppinsFont.deriveFont(12f); // Ukuran font 12
+            levelDisplay.setFont(poppins);
+            scoreDisplay.setFont(poppins);
+            btnMainMenu.setFont(poppins);   
+            // Anda bisa mengatur font untuk komponen lain di sini
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     
     
