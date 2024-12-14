@@ -1,15 +1,10 @@
 package ftbGames;
 import java.awt.*;
-import static java.awt.EventQueue.invokeLater;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 import java.io.File;
 import java.io.IOException;
@@ -24,8 +19,7 @@ public class StartupForm extends javax.swing.JFrame {
         loadCustomFont();
     }
     
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+   
     private void initComponents() {
 
         btnStart = new JButton();
