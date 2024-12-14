@@ -10,7 +10,11 @@ public class FtbBlock
     private int [][][] shapes;
     private int currentRotation;
     
-    private Color[] availableColors = {Color.GREEN, Color.RED, Color.BLUE};
+    private Color[] availableColors = {
+        new Color(173, 216, 230),  
+        new Color(219, 112, 147), 
+        new Color(255, 255, 150)   
+    };
     
     public FtbBlock (int[][] shape)
     {
