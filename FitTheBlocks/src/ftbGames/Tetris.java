@@ -1,6 +1,5 @@
 package ftbGames;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
 public class Tetris
@@ -36,7 +35,7 @@ public class Tetris
    
             try {
                 // Add player data (name, score) to the database
-                DatabaseManager dbManager = new DatabaseManager("jdbc:mysql://localhost:3307/tetris_game", "root", "");
+                DatabaseManager dbManager = new DatabaseManager("jdbc:mysql://localhost:3306/tetris_game", "root", "");
                 dbManager.addPlayer(playerName, score);
                 
                 // Update the leaderboard form with the latest data

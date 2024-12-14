@@ -1,9 +1,7 @@
-<<<<<<< HEAD:FitTheBlocks/src/ftbGames/GameForm.java
 package ftbGames;
-=======
+
 import java.awt.Color;
 import java.awt.Font;
->>>>>>> 7d27d563e7a853af50a6e6ae9a31cbc8aa0a7428:FitTheBlocks/src/GameForm.java
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;

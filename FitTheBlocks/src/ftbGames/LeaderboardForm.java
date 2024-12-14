@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class LeaderboardForm extends javax.swing.JFrame {
+public class LeaderboardForm extends JFrame {
 
     private DefaultTableModel tm;
     
