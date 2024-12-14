@@ -1,16 +1,13 @@
-import ftbGames.Tetris;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.WindowConstants;
+package ftbGames;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
-public class LeaderboardForm extends JFrame {
+public class LeaderboardForm extends javax.swing.JFrame {
 
     private DefaultTableModel tm;
     
@@ -78,7 +75,7 @@ public class LeaderboardForm extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnMainMenu)
-                .addPreferredGap(ComponentPlacement.RELATED)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -100,10 +97,29 @@ public class LeaderboardForm extends JFrame {
         
         this.setVisible(true);
     }
+            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton btnMainMenu;
     private JScrollPane jScrollPane1;
     private JTable leaderboard;
     // End of variables declaration//GEN-END:variables
+
+    public void updateLeaderboard(DatabaseManager dbManager) {
+        tm.setRowCount(0);  // Clear existing rows
+    
+        try {
+            // Fetch updated leaderboard data from the database
+            ArrayList<String[]> leaderboardData = dbManager.getLeaderboard();
+    
+            // Add rows to the table model
+            for (String[] data : leaderboardData) {
+                tm.addRow(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+
 }

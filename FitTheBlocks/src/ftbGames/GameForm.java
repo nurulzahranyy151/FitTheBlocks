@@ -1,0 +1,182 @@
+<<<<<<< HEAD:FitTheBlocks/src/ftbGames/GameForm.java
+package ftbGames;
+=======
+import java.awt.Color;
+import java.awt.Font;
+>>>>>>> 7d27d563e7a853af50a6e6ae9a31cbc8aa0a7428:FitTheBlocks/src/GameForm.java
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
+import javax.swing.InputMap;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
+
+public class GameForm extends JFrame
+{
+    private GameArea ga;
+    private GameThread gt;
+    
+    public GameForm()
+    {
+        initComponents();
+        
+        ga = new GameArea(gameAreaPlaceholder, 10);
+        ga.initBackgroundArray();
+        this.add(ga);
+        
+        initControls();
+    }
+    
+    private void initControls()
+    {
+        InputMap im = this.getRootPane().getInputMap();
+        ActionMap am = this.getRootPane().getActionMap();
+        
+        im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
+        im.put(KeyStroke.getKeyStroke("LEFT"), "left");
+        im.put(KeyStroke.getKeyStroke("UP"), "up");
+        im.put(KeyStroke.getKeyStroke("DOWN"), "down");
+        
+        am.put("right", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.moveBlockRight();
+            }
+        });
+        
+        am.put("left", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.moveBlockLeft();
+            }
+        });
+        
+        am.put("up", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.rotateBlock();
+            }
+        });
+        
+        am.put("down", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.dropBlock();
+            }
+        });
+    }
+    
+    public void startGame()
+    {
+        ga.initBackgroundArray();
+       gt = new GameThread(ga, this);
+       gt.start();
+    }
+    
+    public void updateScore(int score)
+    {
+        scoreDisplay.setText("Score: " +score);
+    }
+    
+    public void updateLevel(int level)
+    {
+        levelDisplay.setText("Level: " +level);
+    }
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        gameAreaPlaceholder = new JPanel();
+        scoreDisplay = new JLabel();
+        levelDisplay = new JLabel();
+        btnMainMenu = new JButton();
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        gameAreaPlaceholder.setBackground(new Color(238, 238, 238));
+        gameAreaPlaceholder.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        GroupLayout gameAreaPlaceholderLayout = new GroupLayout(gameAreaPlaceholder);
+        gameAreaPlaceholder.setLayout(gameAreaPlaceholderLayout);
+        gameAreaPlaceholderLayout.setHorizontalGroup(
+            gameAreaPlaceholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 198, Short.MAX_VALUE)
+        );
+        gameAreaPlaceholderLayout.setVerticalGroup(
+            gameAreaPlaceholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 298, Short.MAX_VALUE)
+        );
+
+        scoreDisplay.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
+        scoreDisplay.setText("Score: 0");
+
+        levelDisplay.setFont(new Font("Segoe UI", 0, 18)); // NOI18N
+        levelDisplay.setText("Level: 1");
+
+        btnMainMenu.setText("Main Menu");
+        btnMainMenu.setFocusable(false);
+        btnMainMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainMenuActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(gameAreaPlaceholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(levelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(scoreDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnMainMenu)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scoreDisplay)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(levelDisplay))
+                    .addComponent(gameAreaPlaceholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
+        
+        gt.interrupt();
+        this.setVisible(false);
+        Tetris.showStartup();
+        
+    }//GEN-LAST:event_btnMainMenuActionPerformed
+
+    
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMainMenu;
+    private javax.swing.JPanel gameAreaPlaceholder;
+    private javax.swing.JLabel levelDisplay;
+    private javax.swing.JLabel scoreDisplay;
+    // End of variables declaration//GEN-END:variables
+}
