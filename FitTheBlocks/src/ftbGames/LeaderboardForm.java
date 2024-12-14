@@ -60,6 +60,8 @@ public class LeaderboardForm extends javax.swing.JFrame {
         setResizable(false);
     
         btnMainMenu.setText("Main Menu");
+        btnMainMenu.setBackground(new Color(221, 160,221));
+        btnMainMenu.setForeground(Color.WHITE);
         btnMainMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnMainMenuActionPerformed(evt);
@@ -89,6 +91,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
     
         btnDeletePlayer.setText("Delete Player");
         btnDeletePlayer.setBackground(new Color(221, 160, 221));
+        btnDeletePlayer.setForeground(Color.WHITE);
         btnDeletePlayer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnDeletePlayerActionPerformed(evt);

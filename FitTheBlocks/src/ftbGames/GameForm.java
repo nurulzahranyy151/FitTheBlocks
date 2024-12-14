@@ -114,7 +114,9 @@ public class GameForm extends JFrame
         levelDisplay.setText("Level: 1");
 
         btnMainMenu.setText("Main Menu");
-        btnMainMenu.setFocusable(false);
+        btnMainMenu.setFocusable(true);
+        btnMainMenu.setForeground(Color.white);
+        btnMainMenu.setBackground(new Color(221, 160, 221));
         btnMainMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnMainMenuActionPerformed(evt);
