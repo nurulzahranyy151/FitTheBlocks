@@ -1,7 +1,6 @@
 package ftbGames;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class GameThread extends Thread
 {
@@ -48,7 +47,7 @@ public class GameThread extends Thread
             }
             
             if(ga.isBlockOutOfBounds())
-            {
+            { 
                 Tetris.gameOver(score);
                 break;
             }

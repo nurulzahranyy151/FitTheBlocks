@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 import javax.swing.JPanel;
-
 import ftbBlocks.IShape;
 import ftbBlocks.JShape;
 import ftbBlocks.LShape;
@@ -28,7 +27,7 @@ public class GameArea extends JPanel
     {
         //placeholder.setVisible(false);
         this.setBounds(placeholder.getBounds());
-        this.setBackground(placeholder.getBackground());
+        this.setBackground(new Color(229, 217, 242));
         this.setBorder(placeholder.getBorder());
         
         gridColumns = columns;
