@@ -1,9 +1,8 @@
-
-
+package ftbGames;
 import java.awt.Color;
 import java.util.Random;
 
-public class Block
+public class FtbBlock
 {
     private int [][]shape;
     private Color color;
@@ -13,7 +12,7 @@ public class Block
     
     private Color[] availableColors = {Color.GREEN, Color.RED, Color.BLUE};
     
-    public Block (int[][] shape)
+    public FtbBlock (int[][] shape)
     {
         this.shape = shape;
         
@@ -45,15 +44,15 @@ public class Block
     
     public void spawn(int gridWidth)
     {
-        Random r = new Random();
+        Random randomShape = new Random();
         
-        currentRotation = r.nextInt(shapes.length);
+        currentRotation = randomShape.nextInt(shapes.length);
         shape = shapes[currentRotation];
         
         y = -getHeight();
-        x = r.nextInt(gridWidth - getWidth());
+        x = randomShape.nextInt(gridWidth - getWidth());
         
-        color = availableColors[r.nextInt(availableColors.length)];
+        color = availableColors[randomShape.nextInt(availableColors.length)];
     }
     
     public int [][] getShape (){return shape;}
@@ -80,7 +79,13 @@ public class Block
         shape = shapes[currentRotation];
     }
     
-    public int getBottomEdge(){return y + getHeight();}
-    public int getLeftEdge(){ return x;}
-    public int getRightEdge(){ return x + getWidth();}
+    public int getBottomEdge(){
+        return y + getHeight();
+    }
+    public int getLeftEdge(){ 
+        return x;
+    }
+    public int getRightEdge(){ 
+        return x + getWidth();
+    }
 }
